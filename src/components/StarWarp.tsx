@@ -29,7 +29,7 @@ export default function StarWarp() {
       ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
       ctx.fillRect(0, 0, width, height);
 
-      for (let star of stars) {
+      for (const star of stars) {
         star.z -= speed;
         if (star.z <= 0) {
           star.x = Math.random() * width - centerX;
