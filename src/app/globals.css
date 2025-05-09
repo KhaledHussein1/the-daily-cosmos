@@ -1,24 +1,52 @@
+/* -------------------- */
+/* 🌐 Font Imports      */
+/* -------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap');
-
 @import "tailwindcss";
 
+/* -------------------- */
+/* 🌱 Root Variables    */
+/* -------------------- */
 :root {
   --background: #ffffff;
   --foreground: #ffffff;
 }
 
+/* -------------------- */
+/* 🧍 Base Styles       */
+/* -------------------- */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  height: 100%;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Roboto', sans-serif; 
+  font-family: 'Roboto', sans-serif;
 }
 
+/* -------------------- */
+/* 🔤 Heading Fonts     */
+/* -------------------- */
 h1, h2, h3, h4 {
-  font-family: 'Orbitron', sans-serif; 
-
+  font-family: 'Orbitron', sans-serif;
 }
 
-/* Global styles or in your component-specific CSS file */
+/* -------------------- */
+/* 🌌 Canvas Styles     */
+/* -------------------- */
+canvas {
+  pointer-events: none;
+  will-change: opacity;
+}
+
+/* -------------------- */
+/* ✨ Utility Classes   */
+/* -------------------- */
 .glow-effect {
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7),
+              0 0 20px rgba(255, 255, 255, 0.5);
 }

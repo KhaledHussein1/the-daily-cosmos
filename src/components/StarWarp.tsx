@@ -9,21 +9,24 @@ export default function StarWarp() {
     const canvas = canvasRef.current!;
     const ctx = canvas.getContext('2d')!;
 
-    let width = window.innerWidth;
-    let height = window.innerHeight;
+    const width = document.documentElement.clientWidth;
+    const height = document.documentElement.clientHeight;
+
     canvas.width = width;
     canvas.height = height;
 
-    let centerX = width / 2;
-    let centerY = height / 2;
-    const numStars = 400;
-    const speed = .1;
+    const centerX = width / 2;
+    const centerY = height / 2;
+    const numStars = 300;
+    const speed = 0.1;
 
     let stars = Array.from({ length: numStars }).map(() => ({
       x: Math.random() * width - centerX,
       y: Math.random() * height - centerY,
       z: Math.random() * width,
     }));
+
+    let animationFrameId: number;
 
     const draw = () => {
       ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
@@ -53,35 +56,23 @@ export default function StarWarp() {
       animationFrameId = requestAnimationFrame(draw);
     };
 
-    let animationFrameId = requestAnimationFrame(draw);
+    animationFrameId = requestAnimationFrame(draw);
 
-    const handleResize = () => {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = width;
-      canvas.height = height;
-      centerX = width / 2;
-      centerY = height / 2;
-
-      stars = Array.from({ length: numStars }).map(() => ({
-        x: Math.random() * width - centerX,
-        y: Math.random() * height - centerY,
-        z: Math.random() * width,
-      }));
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-      cancelAnimationFrame(animationFrameId);
-    };
+    return () => cancelAnimationFrame(animationFrameId);
   }, []);
 
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full z-[-1]"
+      className="absolute top-0 left-0 w-screen h-screen z-[-1] pointer-events-none"
+      style={{
+        willChange: 'opacity',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+      }}
     />
   );
 }
