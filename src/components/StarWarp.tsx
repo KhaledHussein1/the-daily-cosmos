@@ -20,7 +20,7 @@ export default function StarWarp() {
     const numStars = 300;
     const speed = 0.1;
 
-    let stars = Array.from({ length: numStars }).map(() => ({
+    const stars = Array.from({ length: numStars }).map(() => ({
       x: Math.random() * width - centerX,
       y: Math.random() * height - centerY,
       z: Math.random() * width,
